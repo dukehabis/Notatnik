@@ -1,6 +1,5 @@
 package com.habis.notatnik;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -14,18 +13,16 @@ import java.util.*;
 
 public class Layout {
     private Stage stage;
-    private String usrHome = System.getProperty("user.home");
-    private String separator = File.separator;
-    private String documentPath = usrHome + separator + "Documents";
+    private final String usrHome = System.getProperty("user.home");
+    private final String separator = File.separator;
+    private final String documentPath = usrHome + separator + "Documents";
 
     @FXML
     TextArea textArea;
-    private ListView pointList;
+    @FXML
+    private ListView<String> pointList;
 
-    public void setPointList(ListView pointList) {
-        this.pointList = pointList;
-        pointList.setCellFactory();
-    }
+
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -34,7 +31,7 @@ public class Layout {
     }
 
     @FXML
-    public void zapiszPlik(ActionEvent actionEvent) {
+    public void zapiszPlik() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Zapisz plik");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter(
@@ -58,7 +55,7 @@ public class Layout {
     }
 
     @FXML
-    public void otworzPlik(ActionEvent actionEvent) {
+    public void otworzPlik() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Wybierz plik");
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter(
